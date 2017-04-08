@@ -15,7 +15,7 @@ namespace client_socketchat
         public int Ip = 55555;
 
         public string Username { get; set; } = "Default";
-        public string Roomname { get; set; } = "Default";
+        public string Roomname { get; set; } = "Global";
 
         private TcpClient TcpClient { get; } = new TcpClient();
 
@@ -41,6 +41,12 @@ namespace client_socketchat
             {
                 return false;
             }
+        }
+
+        public async Task<int> ChangeRoom(string roomname)
+        {
+            Roomname = roomname;
+            return await SendMessage(new SocketAction(SocketActions.ClientChat, roomname, true));
         }
 
         public async Task<int> SendChatMessage(string message)

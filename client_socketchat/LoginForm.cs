@@ -35,6 +35,12 @@ namespace client_socketchat
 
         private async Task<int> Login()
         {
+            if(Username.Text.Length < 4)
+            {
+                MessageBox.Show("El nom d'usuari es molt curt!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
             socketHelper.Username = Username.Text;
 
             if (await socketHelper.Connect())

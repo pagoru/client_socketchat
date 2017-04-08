@@ -47,11 +47,12 @@
             this.chatList.FormattingEnabled = true;
             this.chatList.ItemHeight = 20;
             this.chatList.Items.AddRange(new object[] {
-            "Default"});
+            "Global"});
             this.chatList.Location = new System.Drawing.Point(12, 12);
             this.chatList.Name = "chatList";
             this.chatList.Size = new System.Drawing.Size(156, 340);
             this.chatList.TabIndex = 0;
+            this.chatList.SelectedIndexChanged += new System.EventHandler(this.chatList_SelectedIndexChanged);
             // 
             // contextMenuStrip1
             // 
@@ -113,6 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(652, 391);
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.textBox);
