@@ -34,8 +34,8 @@
             this.ChatListMenu_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.ChatListMenu_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.messageList = new System.Windows.Forms.ListBox();
+            this.UsernameLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,12 +43,14 @@
             // 
             this.chatList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chatList.ContextMenuStrip = this.contextMenuStrip1;
+            this.chatList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chatList.FormattingEnabled = true;
+            this.chatList.ItemHeight = 20;
             this.chatList.Items.AddRange(new object[] {
             "Default"});
             this.chatList.Location = new System.Drawing.Point(12, 12);
             this.chatList.Name = "chatList";
-            this.chatList.Size = new System.Drawing.Size(156, 351);
+            this.chatList.Size = new System.Drawing.Size(156, 340);
             this.chatList.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -63,7 +65,7 @@
             // 
             this.ChatListMenu_Add.Name = "ChatListMenu_Add";
             this.ChatListMenu_Add.Size = new System.Drawing.Size(143, 22);
-            this.ChatListMenu_Add.Text = "Añadir chat";
+            this.ChatListMenu_Add.Text = "Afegir chat";
             this.ChatListMenu_Add.Click += new System.EventHandler(this.ChatListMenu_Add_Click);
             // 
             // ChatListMenu_Delete
@@ -77,40 +79,42 @@
             // 
             this.textBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox.Location = new System.Drawing.Point(174, 330);
+            this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox.Location = new System.Drawing.Point(176, 360);
             this.textBox.Multiline = true;
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(425, 31);
+            this.textBox.Size = new System.Drawing.Size(464, 22);
             this.textBox.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(605, 330);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(33, 33);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.textBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // messageList
             // 
             this.messageList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.messageList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageList.FormattingEnabled = true;
-            this.messageList.IntegralHeight = false;
-            this.messageList.Location = new System.Drawing.Point(174, 12);
-            this.messageList.MultiColumn = true;
+            this.messageList.ItemHeight = 20;
+            this.messageList.Location = new System.Drawing.Point(176, 12);
             this.messageList.Name = "messageList";
             this.messageList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.messageList.Size = new System.Drawing.Size(464, 312);
+            this.messageList.Size = new System.Drawing.Size(464, 340);
             this.messageList.TabIndex = 1;
+            // 
+            // UsernameLabel
+            // 
+            this.UsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameLabel.Location = new System.Drawing.Point(12, 359);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(156, 23);
+            this.UsernameLabel.TabIndex = 3;
+            this.UsernameLabel.Text = "Default:";
+            this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 373);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(652, 391);
+            this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.messageList);
             this.Controls.Add(this.chatList);
@@ -129,11 +133,11 @@
 
         private System.Windows.Forms.ListBox chatList;
         private System.Windows.Forms.TextBox textBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox messageList;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ChatListMenu_Add;
         private System.Windows.Forms.ToolStripMenuItem ChatListMenu_Delete;
+        private System.Windows.Forms.Label UsernameLabel;
     }
 }
 

@@ -19,17 +19,8 @@ namespace client_socketchat
             SocketHelper = socketHelper;
             InitializeComponent();
             chatList.SelectedIndex = 0;
-        }
 
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            foreach(var message in textBox.Text.Split('\n'))
-            {
-                //AddMessage($"{SocketHelper.Username}: {message}");
-                await SocketHelper.SendChatMessage(message);
-            }
-            textBox.Text = null;
-            textBox.Focus();
+            UsernameLabel.Text = socketHelper.Username;
         }
 
         private void ChatListMenu_Add_Click(object sender, EventArgs e)
@@ -56,6 +47,15 @@ namespace client_socketchat
         public void ClearChatMessages()
         {
             messageList.Items.Clear();
+        }
+
+        private async void textBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                await SocketHelper.SendChatMessage(textBox.Text);
+                textBox.Text = null;
+            }
         }
     }
 }
