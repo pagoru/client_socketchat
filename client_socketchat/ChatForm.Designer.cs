@@ -60,20 +60,20 @@
             this.ChatListMenu_Add,
             this.ChatListMenu_Delete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(144, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // ChatListMenu_Add
             // 
             this.ChatListMenu_Add.Name = "ChatListMenu_Add";
-            this.ChatListMenu_Add.Size = new System.Drawing.Size(143, 22);
-            this.ChatListMenu_Add.Text = "Afegir chat";
+            this.ChatListMenu_Add.Size = new System.Drawing.Size(152, 22);
+            this.ChatListMenu_Add.Text = "Afegir xat";
             this.ChatListMenu_Add.Click += new System.EventHandler(this.ChatListMenu_Add_Click);
             // 
             // ChatListMenu_Delete
             // 
             this.ChatListMenu_Delete.Name = "ChatListMenu_Delete";
-            this.ChatListMenu_Delete.Size = new System.Drawing.Size(143, 22);
-            this.ChatListMenu_Delete.Text = "Eliminar chat";
+            this.ChatListMenu_Delete.Size = new System.Drawing.Size(152, 22);
+            this.ChatListMenu_Delete.Text = "Eliminar xat";
             this.ChatListMenu_Delete.Click += new System.EventHandler(this.ChatListMenu_Delete_Click);
             // 
             // textBox
