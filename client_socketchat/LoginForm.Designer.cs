@@ -110,7 +110,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 21);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Puerto";
+            this.label1.Text = "Port";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
