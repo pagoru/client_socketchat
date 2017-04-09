@@ -11,13 +11,13 @@ namespace client_socketchat
 {
     public class SocketHelper
     {
-        public string Server = "localhost";
-        public int Ip = 55555;
+        public string ServerIp = "localhost";
+        public int ServerPort = 55555;
 
         public string Username { get; set; } = "Default";
         public string Roomname { get; set; } = "Global";
 
-        private TcpClient TcpClient { get; } = new TcpClient();
+        public TcpClient TcpClient { get; } = new TcpClient();
 
         public StreamWriter StreamWriter { get; set; }
         public StreamReader StreamReader { get; set; }
@@ -28,7 +28,7 @@ namespace client_socketchat
         {
             try
             {
-                await TcpClient.ConnectAsync(Server, Ip);
+                await TcpClient.ConnectAsync(ServerIp, ServerPort);
                 NetworkStream networkStream = TcpClient.GetStream();
                 StreamWriter = new StreamWriter(networkStream);
                 StreamReader = new StreamReader(networkStream);
@@ -75,18 +75,26 @@ namespace client_socketchat
                 case SocketActions.ServerLogin:
                     break;
                 case SocketActions.ServerSendMessage:
-                    if (Program.ChatForm.Controls[0].InvokeRequired)
-                    {
-                        Program.ChatForm.Controls[0].BeginInvoke((Action)(() => {
-
-                            Program.ChatForm.AddMessage(socketAction.Message);
-                        }));
-                        return;
-                    }
-                    Program.ChatForm.Focus();
+                    AddMessage(socketAction.Message);
+                    break;
+                case SocketActions.CommandUsuaris:
+                    AddMessage($"{Username}, hi ha {socketAction.Message} usuaris conectats.");
                     break;
             }
             Console.WriteLine(message);
+        }
+
+        private void AddMessage(string message)
+        {
+            if (Program.ChatForm.Controls[0].InvokeRequired)
+            {
+                Program.ChatForm.Controls[0].BeginInvoke((Action)(() => {
+
+                    Program.ChatForm.AddMessage(message);
+                }));
+                return;
+            }
+            Program.ChatForm.Focus();
         }
 
         private void ReadFrom()

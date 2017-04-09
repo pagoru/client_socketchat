@@ -59,25 +59,5 @@ namespace client_socketchat.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap darkaqua_logo {
-            get {
-                object obj = ResourceManager.GetObject("darkaqua_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap darkaquaLogo_v1 {
-            get {
-                object obj = ResourceManager.GetObject("darkaquaLogo_v1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

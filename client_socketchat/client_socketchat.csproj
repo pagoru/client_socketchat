@@ -126,11 +126,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="darkaqua_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="darkaquaLogo_v1.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -62,6 +62,7 @@
             this.Username.Name = "Username";
             this.Username.Size = new System.Drawing.Size(154, 19);
             this.Username.TabIndex = 1;
+            this.Username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Username_KeyDown);
             // 
             // textIp

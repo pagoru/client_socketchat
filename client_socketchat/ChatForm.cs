@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace client_socketchat
     {
         public SocketHelper SocketHelper { get; set; }
 
+        private Thread PingThread { get; }
+
         public ChatForm(SocketHelper socketHelper)
         {
             SocketHelper = socketHelper;
@@ -21,12 +24,38 @@ namespace client_socketchat
             chatList.SelectedIndex = 0;
 
             UsernameLabel.Text = socketHelper.Username;
+
+            PingThread = new Thread(PingPong);
+            PingThread.Start();
+        }
+
+        private void PingPong()
+        {
+            while (true)
+            {
+                Thread.Sleep(100);
+
+                if (!SocketHelper.TcpClient.Connected)
+                {
+                    if (Program.ChatForm.Controls[0].InvokeRequired)
+                    {
+                        Program.ChatForm.Controls[0].BeginInvoke((Action)(() => {
+
+                            MessageBox.Show("S'ha tallat la conexió amb el servidor... :(", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Program.ChatForm.End();
+                        }));
+                        return;
+                    }
+                    Program.ChatForm.Focus();
+                }
+            }
         }
 
         private void ChatListMenu_Add_Click(object sender, EventArgs e)
         {
             string roomname = Microsoft.VisualBasic.Interaction
-                .InputBox("Añadir nueva sala de chat", "Añadir sala", "Nombre de la sala", 0, 0);
+                .InputBox("Afegir una nova sala", "Afegir sala", "Nom de la sala", 0, 0);
 
             if(roomname.Length == 0)
             {
@@ -62,8 +91,7 @@ namespace client_socketchat
 
         private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SocketHelper.EndConnection();
-            Program.LoginForm.Close();
+            End();
         }
 
         public async void SelectChatroom(string roomname)
@@ -90,6 +118,13 @@ namespace client_socketchat
                 await SocketHelper.SendChatMessage(textBox.Text);
                 textBox.Text = null;
             }
+        }
+
+        public void End()
+        {
+            PingThread.Abort();
+            SocketHelper.EndConnection();
+            Program.LoginForm.Close();
         }
     }
 }
