@@ -34,7 +34,7 @@ namespace client_socketchat
             while (true)
             {
                 Thread.Sleep(100);
-
+                
                 if (!SocketHelper.TcpClient.Connected)
                 {
                     if (Program.ChatForm.Controls[0].InvokeRequired)
